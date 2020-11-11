@@ -111,13 +111,13 @@ class ModelsCommand extends Command
      */
     public function __construct(Repository $config, Filesystem $files)
     {
-        parent::__construct();
-
         $this->config = $config;
         $this->files = $files;
 
         $directory = $this->config->get('ide-helper.directory');
         $directory ? $this->files->ensureDirectoryExists($directory) : null;
+
+        parent::__construct();
     }
 
     /**

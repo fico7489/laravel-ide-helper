@@ -68,14 +68,14 @@ class PhpStormCommand extends Command
      */
     public function __construct(Repository $config, $files, $view)
     {
-        parent::__construct();
-
         $this->config = $config;
         $this->files = $files;
         $this->view = $view;
 
         $directory = $this->config->get('ide-helper.directory');
         $directory ? $this->files->ensureDirectoryExists($directory) : null;
+
+        parent::__construct();
     }
 
     /**
