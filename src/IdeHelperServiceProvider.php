@@ -58,21 +58,21 @@ class IdeHelperServiceProvider extends ServiceProvider implements DeferrableProv
         $localViewFactory = $this->createLocalViewFactory();
 
         $this->app->singleton(
-            'command.ide-helper.generate',
+            'command.ide-helper.generate-facades',
             function ($app) use ($localViewFactory) {
                 return new FacadesCommand($app['config'], $app['files'], $localViewFactory);
             }
         );
 
         $this->app->singleton(
-            'command.ide-helper.models',
+            'command.ide-helper.generate-models',
             function ($app) {
                 return new ModelsCommand($app['config'], $app['files']);
             }
         );
 
         $this->app->singleton(
-            'command.ide-helper.meta',
+            'command.ide-helper.generate-phpstorm',
             function ($app) use ($localViewFactory) {
                 return new PhpStormCommand($app['config'], $app['files'], $localViewFactory);
             }
