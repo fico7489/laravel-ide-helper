@@ -13,6 +13,7 @@ namespace Barryvdh\LaravelIdeHelper\Console;
 
 use Barryvdh\LaravelIdeHelper\Eloquent;
 use Barryvdh\LaravelIdeHelper\Generator;
+use Illuminate\Config\Repository;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Symfony\Component\Console\Input\InputArgument;
@@ -57,16 +58,19 @@ class FacadesCommand extends Command
      * @param \Illuminate\View\Factory $view
      */
     public function __construct(
-        /*ConfigRepository */
-        $config,
+        Repository $config,
         Filesystem $files,
         /* Illuminate\View\Factory */
         $view
     ) {
+        parent::__construct();
+
         $this->config = $config;
         $this->files = $files;
         $this->view = $view;
-        parent::__construct();
+
+        $directory = $this->config->get('ide-helper.directory');
+        $directory ? $this->files->ensureDirectoryExists($directory) : null;
     }
 
     /**
