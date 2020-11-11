@@ -57,17 +57,13 @@ class FacadesCommand extends Command
      * @param \Illuminate\Filesystem\Filesystem $files
      * @param \Illuminate\View\Factory $view
      */
-    public function __construct(
-        Repository $config,
-        Filesystem $files,
-        /* Illuminate\View\Factory */
-        $view
-    ) {
+    public function __construct(Repository $config, Filesystem $files, \Illuminate\View\Factory $view) {
         parent::__construct();
 
         $this->config = $config;
         $this->files = $files;
         $this->view = $view;
+
 
         $directory = $this->config->get('ide-helper.directory');
         $directory ? $this->files->ensureDirectoryExists($directory) : null;
