@@ -86,9 +86,9 @@ class IdeHelperServiceProvider extends ServiceProvider implements DeferrableProv
         );
 
         $this->commands(
-            'command.ide-helper.generate',
-            'command.ide-helper.models',
-            'command.ide-helper.meta',
+            'command.ide-helper.generate-facades',
+            'command.ide-helper.generate-models',
+            'command.ide-helper.generate-phpstorm',
             'command.ide-helper.eloquent'
         );
     }
@@ -100,7 +100,12 @@ class IdeHelperServiceProvider extends ServiceProvider implements DeferrableProv
      */
     public function provides()
     {
-        return ['command.ide-helper.generate', 'command.ide-helper.models'];
+        return [
+            'command.ide-helper.generate-facades',
+            'command.ide-helper.generate-models',
+            'command.ide-helper.generate-phpstorm',
+            'command.ide-helper.eloquent',
+        ];
     }
 
     /**
