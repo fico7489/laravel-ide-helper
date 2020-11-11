@@ -114,9 +114,6 @@ class ModelsCommand extends Command
         $this->config = $config;
         $this->files = $files;
 
-        $directory = $this->config->get('ide-helper.directory');
-        $directory ? $this->files->ensureDirectoryExists($directory) : null;
-
         parent::__construct();
     }
 

@@ -72,9 +72,6 @@ class PhpStormCommand extends Command
         $this->files = $files;
         $this->view = $view;
 
-        $directory = $this->config->get('ide-helper.directory');
-        $directory ? $this->files->ensureDirectoryExists($directory) : null;
-
         parent::__construct();
     }
 
